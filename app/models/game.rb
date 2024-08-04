@@ -1,0 +1,11 @@
+class Game < ApplicationRecord
+  belongs_to :user
+
+  before_create :set_current_money
+
+  private
+
+  def set_current_money
+    self.current_money ||= 100
+  end
+end

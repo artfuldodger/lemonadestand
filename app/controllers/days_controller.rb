@@ -4,16 +4,22 @@ class DaysController < ApplicationController
   def new
     @game = current_user.games.find(params[:game_id])
     @day = @game.days.new
+    @previous_day = @game.days.last
   end
 
   def create
     @game = current_user.games.find(params[:game_id])
     @day = @game.days.new(day_params)
     if @day.save
-      redirect_to new_game_day_path(@game)
+      redirect_to game_day_path(@game, @day)
     else
       render :new
     end
+  end
+
+  def show
+    @game = current_user.games.find(params[:game_id])
+    @day = @game.days.find(params[:id])
   end
 
   private

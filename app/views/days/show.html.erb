@@ -1,0 +1,10 @@
+<h1>Day <%= @game.days.count %></h1>
+
+<p>You have $<%= @game.current_money %> left</p>
+
+<div>
+  <p>You bought <%= @day.bought_cups %> cups and <%= @day.bought_signs %> signs</p>
+  <p>At <%= number_to_currency @day.cup_price %>, you sold X cups for $X and a profit of $X</p>
+</div>
+
+<%= button_to "Let's go again!", new_game_day_path(@game), method: :get %>

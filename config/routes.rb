@@ -8,5 +8,7 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  resources :games, only: %i[create show]
+  resources :games, only: %i[create] do
+    resources :days, only: %i[new create]
+  end
 end

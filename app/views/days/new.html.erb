@@ -1,0 +1,20 @@
+<h1>Day <%= @game.days.count + 1 %></h1>
+
+<%= form_with model: [@game, @day] do |f| %>
+  <div>
+    <%= f.label :bought_cups, 'How many cups to buy?' %>
+    <%= f.number_field :bought_cups %>
+  </div>
+
+  <div>
+    <%= f.label :bought_cups, 'How many advertising signs to buy?' %>
+    <%= f.number_field :bought_signs %>
+  </div>
+
+  <div>
+    <%= f.label :cup_price, 'How much to charge per cup?' %>
+    <%= f.number_field :cup_price, step: 0.01 %>
+  </div>
+
+  <%= f.submit "Let's sell!" %>
+<% end %>

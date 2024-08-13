@@ -1,7 +1,7 @@
 <p>sup let's sell some lemonade</p>
 
 <% if current_user.games.any? %>
-  <p>You have some games</p>
-<% else %>
-  <%= button_to 'Start Game', games_path %>
+  <p>You have some games - we should show a list or something here so people can look at their past games.</p>
 <% end %>
+
+<%= button_to 'Start Game', games_path %>

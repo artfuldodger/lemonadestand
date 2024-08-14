@@ -1,10 +1,16 @@
 <h1>Day <%= @game.days.count %></h1>
 
-<p>You have <%= number_to_currency @game.current_money/100.0 %> left</p>
+<% if @game.current_money.zero? %>
+  <h1>YOU'RE BANKRUPT OH NOSE</h1>
 
-<div>
-  <p>You bought <%= @day.bought_cups %> cups and <%= @day.bought_signs %> signs for a total of <%= number_to_currency @day.money_spent / 100.0 %>.</p>
-  <p>At <%= number_to_currency @day.cup_price %> each, you sold <%= @day.sold_cups %> cups for <%= number_to_currency @day.cup_price * @day.sold_cups %> and a <%= @day.profitable? ? 'profit' : 'loss' %> of <%= number_to_currency @day.profit.abs / 100.0 %></p>
-</div>
+  <%= button_to "New game", games_path %>
+<% else %>
+  <p>You have <%= number_to_currency @game.current_money/100.0 %> left</p>
 
-<%= button_to "Let's go again!", new_game_day_path(@game), method: :get %>
+  <div>
+    <p>You bought <%= @day.bought_cups %> cups and <%= @day.bought_signs %> signs for a total of <%= number_to_currency @day.money_spent / 100.0 %>.</p>
+    <p>At <%= number_to_currency @day.cup_price %> each, you sold <%= @day.sold_cups %> cups for <%= number_to_currency @day.cup_price * @day.sold_cups %> and a <%= @day.profitable? ? 'profit' : 'loss' %> of <%= number_to_currency @day.profit.abs / 100.0 %></p>
+  </div>
+
+  <%= button_to "Let's go again!", new_game_day_path(@game), method: :get %>
+<% end %>

@@ -21,7 +21,7 @@ module Services
 
     def sufficient_funds?
       if day.game.current_money < day.money_spent
-        day.errors.add(:base, "You don't have $#{(cost_of_day / 100).round(2)} :(")
+        day.errors.add(:base, "You don't have $#{(day.money_spent / 100).round(2)} :(")
         return false
       end
       true

@@ -3,7 +3,7 @@
 <% if current_user.games.any? %>
   <ul>
     <% current_user.games.each_with_index do |game, index| %>
-      <li><%= link_to "Game #{index + 1}", game_path(game) %> - <%= number_to_currency game.current_money / 100.0 %></li>
+      <li><%= link_to "Game #{index + 1}", game_path(game) %> - Day #<%= game.days.count %> - <%= number_to_currency game.current_money / 100.0 %></li>
     <% end %>
   </ul>
 <% end %>

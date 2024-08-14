@@ -8,6 +8,11 @@ class GamesController < ApplicationController
 
   def show
     game = current_user.games.find(params[:id])
-    redirect_to game_day_path(game, game.days.last)
+    day = game.days.last
+    if day
+      redirect_to game_day_path(game, day)
+    else
+      redirect_to new_game_day_path(game)
+    end
   end
 end

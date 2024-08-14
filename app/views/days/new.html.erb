@@ -1,13 +1,19 @@
 <h1>Day <%= @game.days.count + 1 %></h1>
 
+<p>You have <%= number_to_currency @game.current_money/100.0 %> left</p>
+
 <%= form_with model: [@game, @day] do |f| %>
+  <% if @day.errors.any? %>
+    <p class="errors"><%= @day.errors.full_messages.to_sentence %></p>
+  <% end %>
+
   <div>
-    <%= f.label :bought_cups, 'How many cups to buy?' %>
+    <%= f.label :bought_cups, 'How many cups to buy? ($1 each)' %>
     <%= f.number_field :bought_cups %>
   </div>
 
   <div>
-    <%= f.label :bought_cups, 'How many advertising signs to buy?' %>
+    <%= f.label :bought_cups, 'How many advertising signs to buy? ($5 each)' %>
     <%= f.number_field :bought_signs %>
   </div>
 

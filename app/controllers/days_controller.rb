@@ -10,10 +10,10 @@ class DaysController < ApplicationController
   def create
     @game = current_user.games.find(params[:game_id])
     @day = @game.days.new(day_params)
-    if @day.save
+    if Services::DayMaker.new(@day).make
       redirect_to game_day_path(@game, @day)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

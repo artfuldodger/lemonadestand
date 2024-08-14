@@ -7,6 +7,6 @@ class Game < ApplicationRecord
   private
 
   def set_current_money
-    self.current_money ||= 100
+    self.current_money ||= 10_000
   end
 end
